@@ -1,4 +1,10 @@
-use bevy::{prelude::*, window::WindowResized};
+use bevy::{
+    prelude::*,
+    // render::view::window,
+    window::{WindowMode, WindowResized, WindowResolution},
+};
+pub mod home_board;
+
 //Window Stuff
 /// Marker component for the text that displays the current resolution.
 #[derive(Component)]
@@ -85,35 +91,28 @@ fn close_on_esc(
     }
 }
 
-const HOMEBOARD_TEXTURE: &str = "Images/Boards/Homeboard_Long.jpg";
-const ACTIONBOARD_TEXTURE: &str = "Images/Boards/Action_Board.jpg";
+// const ACTIONBOARD_TEXTURE: &str = "Images/Boards/Action_Board.jpg";
 
 fn setup(
     mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    window: Single<&mut Window>,
-    assets: Res<Assets<Image>>,
+    asset_server: Res<AssetServer>, // window: Single<&mut Window>
 ) {
-    let homeboard_texture = asset_server.load(HOMEBOARD_TEXTURE);
+
     // Get window Dimensions
     // Make the HomeBoard fit the window
     // let window_width = window.width();
-    let window_height = window.height();
+    // let window_height = window.height();
+    // let window_width = window.width();
 
     // Get homeboard dimensions
 
-    commands.spawn(Sprite {
-        custom_size: Some(Vec2::new(homeboard_width, window_height)),
-        image: homeboard_texture,
-        ..default()
-    });
-    let texture = asset_server.load(ACTIONBOARD_TEXTURE);
-    commands.spawn(Sprite {
-        //I want the x axis to remain the same as the image
-        custom_size: Some(Vec2::new(100.0, window_height)),
-        image: texture,
-        ..Default::default()
-    });
+    // let texture = asset_server.load(ACTIONBOARD_TEXTURE);
+    // commands.spawn(Sprite {
+    //     //I want the x axis to remain the same as the image
+    //     custom_size: Some(Vec2::new(100.0, window_height)),
+    //     image: texture,
+    //     ..Default::default()
+    // });
 }
 
 fn main() {
@@ -123,7 +122,18 @@ fn main() {
             medium: Vec2::new(800.0, 600.0),
             small: Vec2::new(640.0, 360.0),
         })
-        .add_plugins(DefaultPlugins)
+        .add_plugins((DefaultPlugins.set(WindowPlugin {
+            primary_window: Some(Window {
+                title: "A Feast For Odin ".into(),
+                name: Some("AFFO.app".into()),
+                resolution: WindowResolution::new(1920.0, 1080.0),
+                fit_canvas_to_parent: true,
+                mode: WindowMode::Fullscreen(MonitorSelection::Index(1)),
+                focused: true,
+                ..default()
+            }),
+            ..default()
+        }), home_board::HomeboardPlugin))
         .add_systems(Startup, (setup_camera, setup_ui, setup))
         .add_systems(Update, (on_resize_system, toggle_resolution, close_on_esc))
         // .add_systems(Update, update)
