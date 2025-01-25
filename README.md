@@ -7,9 +7,8 @@
 // Supply { Wood, Stone, Ore, Silver, WeaponCards, OccupationCards, Goods, SpecialTiles, ThingPenalties } # OccupationCards can be in supply or in hand
 // Goods { GoodsColour, GoodSize, Option(SwordValue), Option(HarvestNumber), Option(Animal)}
 // GoodsColour { Orange="Farm Product", Red="Animal Product", Green="Craft Product", Blue="Luxury Good" }
-// GoodSize { 1x2, 1x3, 2x2, 1x4, 2x3, 2x4, 3x3, 3x4 } # Unlimited Supply
-// SwordValue { usize }
-// HarvestNumber { usize }
+Unlimited Supply
+
 // Animal { Pregnant/non-pregnant }
 // Viking { Colour, VikingState }
 // VikingState { BanquetTable, ThingSquare, ActionBoard }

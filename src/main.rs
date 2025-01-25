@@ -1,21 +1,12 @@
 use bevy::prelude::*;
 mod constants;
-use constants::*;
+mod components;
+mod systems;
+mod camera;
 
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins) // Bevy's default plugins include rendering
-        .add_systems(Startup, setup)
+        .add_systems(Startup, (camera::spawn_camera, systems::draw_placement_area::draw_placement_area))
         .run();
-}
-
-fn setup(mut commands: Commands) {
-    // Add a camera so the square is visible
-    commands.spawn(Camera2d::default());
-
-    // Spawn a square using a SpriteBundle
-    commands.spawn(Sprite {
-        size: Vec2::new(100.0, 100.0),
-        ..Default::default()
-    });
 }
