@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct Spaces(u8);
+pub struct Spaces(pub u32);

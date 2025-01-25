@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct NegativePoints(u32);
+pub struct NegativePoints(pub u32);

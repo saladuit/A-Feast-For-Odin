@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct Name( &'static str);
+pub struct Name(pub &'static str);

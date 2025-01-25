@@ -1,3 +1,5 @@
+use bevy::prelude::*;
+
 #[derive(Component)] 
 pub enum EquipmentType {
   CraftProduct,

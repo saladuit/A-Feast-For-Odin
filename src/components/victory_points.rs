@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct VictoryPoints(u32);
+pub struct VictoryPoints(pub u32);

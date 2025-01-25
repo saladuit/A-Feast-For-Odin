@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct SwordValue(u8);
+pub struct SwordValue(pub u32);

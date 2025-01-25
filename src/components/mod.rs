@@ -1,5 +1,4 @@
 pub mod tile_type;
-pub mod good;
 pub mod victory_points;
 pub mod negative_points;
 pub mod spaces;
@@ -17,7 +16,6 @@ pub mod good_type;
 
 // Re-export TileType for easy access
 pub use tile_type::*;
-pub use good::*;
 pub use victory_points::*;
 pub use negative_points::*;
 pub use spaces::*;

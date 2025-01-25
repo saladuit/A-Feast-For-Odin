@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct SilverCost(u8);
+pub struct SilverCost(pub u32);

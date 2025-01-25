@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct ForgeSymbol(bool);
+pub struct ForgeSymbol(pub bool);

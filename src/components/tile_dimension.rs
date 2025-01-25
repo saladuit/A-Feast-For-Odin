@@ -1,2 +1,4 @@
+use bevy::prelude::*;
+
 #[derive(Component)]
-pub struct TileDimension( (u32, u32));
+pub struct TileDimension(pub  (u32, u32));

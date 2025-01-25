@@ -1,3 +1,4 @@
+use bevy::prelude::*;
 
 #[derive(Component)]
-pub struct Pregnant(bool);
+pub struct Pregnant(pub bool);
