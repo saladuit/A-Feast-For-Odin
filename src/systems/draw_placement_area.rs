@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use tile_type::tile_type_to_color;
+use tile_type::*;
 use crate::constants::PLACEMENT_AREA_MAP;
 use crate::components::*;
 
@@ -13,7 +13,7 @@ pub fn draw_placement_area(mut commands: Commands) {
     for (col_index, tile) in row.iter().enumerate() {
       let x = OFFSET_X + (col_index as f32 * TILE_SIZE);
       let y = OFFSET_Y - (row_index as f32 * TILE_SIZE);
-      let color = tile_type_to_color(tile);
+      let color = tile_type::TileType::to_color(tile);
       commands.spawn((Sprite {
         color: Color::BLACK,
         custom_size: Some(Vec2::new(TILE_SIZE, TILE_SIZE)),

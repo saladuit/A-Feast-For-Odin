@@ -32,22 +32,7 @@ Unlimited Supply
 // IncomeDiagonal { size, lowest_visible_number }
 // Resources -> Wood, Stone, Ore, Silver
 // OvalSupplyBoard { Special Tiles }
-// Special Tiles -> Name, Spaces, Sword Value, Silver Cost, Forge Symbol -> { 
-// { Glass Beads, 5, 7, 0, false} ,
-// [ Helmet, 5, 8, 1, true } ,
-// { Cloakpin, 5 8, 1, true} ,
-// { Belt, 5, 8, 2, false} ,
-// { Crucifix, 6, 8, 2, true} , 
-// { Drinking Horn, 6, 8, 2, false} ,
-// { Amber Figure, 7, 9, 2, false} ,
-// { Horseshoe, 7, 9, 2, true} ,
-// { Gold Brooch, 8, 9, 3, false} ,
-// { Forge Hammer, 9, 10, 4, true} ,
-// { Fibula, 9, 10, 4, true} ,
-// { Throwing Axe, 9, 11, 4, true} ,
-// { Chalice, 10, 12, 5, false} ,
-// { Crown English, 12, 13, 6, false} ,
-// { Crown, 13, 16, None, false} , # Also Don't forget to score 2 points
+
 // Round Overview
 // Round Tracker
 // Building Tiles -> BuildingType -> Shed, Stone House, Long House
