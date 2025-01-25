@@ -1,4 +1,4 @@
 use bevy::prelude::*;
 
 #[derive(Component)]
-pub struct Name(pub &'static str);
+pub struct Points(pub u32);

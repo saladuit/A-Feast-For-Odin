@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use tile_type::*;
 use crate::constants::PLACEMENT_AREA_MAP;
 use crate::components::*;
 

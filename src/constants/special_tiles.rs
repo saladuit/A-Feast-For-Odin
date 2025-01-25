@@ -1,3 +1,7 @@
+use crate::components::spaces::Spaces;
+use crate::components::sword_value::SwordValue;
+use crate::components::silver_cost::SilverCost;
+use crate::components::forge_symbol::ForgeSymbol;
 
 pub const SPECIAL_TILES: &[(&str, Spaces, SwordValue, Option<SilverCost>, ForgeSymbol)] = &[
   ("glass beads", Spaces(5), SwordValue(7), Some(SilverCost(0)), ForgeSymbol(false)),

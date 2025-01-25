@@ -10,9 +10,10 @@ pub mod harvest_number;
 pub mod goods_color;
 pub mod food_type;
 pub mod equipment_type;
-pub mod name;
 pub mod tile_dimension;
 pub mod good_type;
+pub mod supply;
+pub mod points;
 
 // Re-export TileType for easy access
 pub use tile_type::*;
@@ -27,6 +28,7 @@ pub use harvest_number::*;
 pub use goods_color::*;
 pub use food_type::*;
 pub use equipment_type::*;
-pub use name::*;
 pub use tile_dimension::*;
 pub use good_type::*;
+pub use supply::*;
+pub use points::*;

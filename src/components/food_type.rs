@@ -1,16 +1,17 @@
 use bevy::prelude::*;
+use crate::components::goods_color::GoodsColor;
 
 #[derive(Component)]
 pub enum FoodType {
-  FarmProduct,
-  AnimalProduct,
+    FarmProduct,
+    AnimalProduct,
 }
 
 impl FoodType {
-  pub fn to_color(food_type: &FoodType) -> Color {
-    match food_type {
-      FoodType::FarmProduct => Color::srgb(1.0, 1.0, 0.0), // Yellow
-      FoodType::AnimalProduct => Color::srgb(1.0, 0.0, 0.0), // Red
+    pub fn to_goods_color(&self) -> GoodsColor {
+        match self {
+            FoodType::FarmProduct => GoodsColor::Yellow,
+            FoodType::AnimalProduct => GoodsColor::Red,
+        }
     }
-  }
 }

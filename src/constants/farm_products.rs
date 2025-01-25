@@ -1,3 +1,5 @@
+use crate::components::harvest_number::HarvestNumber;
+
 pub const FARM_PRODUCTS: &[(&str, (u32, u32), HarvestNumber)] = &[
     ("peas", (1, 2), HarvestNumber::One),
     ("flax", (1, 3), HarvestNumber::One),

@@ -1,6 +1,6 @@
 use crate::components::TileDimension;
 
-pub const CRAFT_PRODUCTS: &[(Name, TileDimension)] = &[
+pub const CRAFT_PRODUCTS: &[(&str, TileDimension)] = &[
     ("oil", TileDimension((1, 2))),
     ("hide", TileDimension((1, 3))),
     ("wool", TileDimension((2, 2))),

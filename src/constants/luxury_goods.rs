@@ -1,3 +1,6 @@
+use crate::components::sword_value::SwordValue;
+use crate::components::victory_points::VictoryPoints;
+
 pub const LUXURY_GOODS: &[(&str, (u32, u32), SwordValue, Option<VictoryPoints>)] = &[
   ("rune stone", (1, 2), SwordValue(6), None),
   ("silverware", (1, 3), SwordValue(7), None),
