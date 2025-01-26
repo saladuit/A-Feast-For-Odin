@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use crate::components::*;
 
-#[derive(Component)]
+#[derive(Component, Default)]
 #[require(Food)]
 pub struct AnimalProduct;
