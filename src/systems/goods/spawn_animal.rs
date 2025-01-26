@@ -11,8 +11,7 @@ pub fn spawn_animal<'a>(
     animal: AnimalValues,
     position: Vec3,
 ) -> EntityCommands<'a> {
-    let mut animal_product 
-    = spawn_animal_product(commands, (animal.0, animal.1), position);
+    let mut animal_product = spawn_animal_product(commands, (animal.0, animal.1), position);
     animal_product
         .insert(Pregnant(animal.2))
         .insert(VictoryPoints(animal.3));

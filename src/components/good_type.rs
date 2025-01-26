@@ -1,5 +1,5 @@
-use crate::components::equipment_type::EquipmentType;
-use crate::components::food_type::FoodType;
+use crate::components::equipment::EquipmentType;
+use crate::components::food::FoodType;
 use bevy::prelude::*;
 
 #[derive(Component)]

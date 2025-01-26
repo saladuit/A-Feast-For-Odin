@@ -1,9 +1,8 @@
 pub mod dimension;
-pub mod equipment_type;
-pub mod food_type;
+pub mod equipment;
+pub mod food;
 pub mod forge_symbol;
 pub mod good_type;
-pub mod goods;
 pub mod goods_color;
 pub mod harvest_number;
 pub mod negative_points;
@@ -18,8 +17,8 @@ pub mod victory_points;
 
 // Re-export TileType for easy access
 pub use dimension::*;
-pub use equipment_type::*;
-pub use food_type::*;
+pub use equipment::*;
+pub use food::*;
 pub use forge_symbol::*;
 pub use good_type::*;
 pub use goods_color::*;

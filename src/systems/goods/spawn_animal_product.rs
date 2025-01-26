@@ -1,5 +1,5 @@
-use crate::components::goods::*;
 use crate::bundles::*;
+use crate::components::goods::*;
 use crate::constants::*;
 
 use bevy::prelude::*;
@@ -9,7 +9,7 @@ pub fn spawn_animal_product<'a>(
     animal_product: AnimalProductValues,
     position: Vec3,
 ) -> EntityCommands<'a> {
-    commands.spawn((AnimalProduct {
+    commands.spawn((AnimalProductBundle {
         name: Name::new(animal_product.0),
         tile: Tile::new(animal_product.1),
         sprite: Sprite {
