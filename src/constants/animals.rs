@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 
 use super::ANIMAL_PRODUCT_COLOR;
+
 pub const ANIMAL_COLOR: Color = ANIMAL_PRODUCT_COLOR;
 
 pub type AnimalValues = (&'static str, (f32, f32), bool, u32);

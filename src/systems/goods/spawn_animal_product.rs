@@ -1,5 +1,7 @@
 use crate::components::goods::*;
+use crate::bundles::*;
 use crate::constants::*;
+
 use bevy::prelude::*;
 
 pub fn spawn_animal_product<'a>(

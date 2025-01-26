@@ -1,10 +1,9 @@
 use crate::components::*;
-use crate::constants::PLACEMENT_AREA_MAP;
+use crate::constants::*;
 use bevy::prelude::*;
 
 /// Draws the placement area based on the PLACEMENT_AREA_MAP constant
 pub fn draw_placement_area(mut commands: Commands) {
-    const TILE_SIZE: f32 = 15.0;
     const BORDER_SIZE: f32 = 1.0;
     const OFFSET_X: f32 = -(13.0 * TILE_SIZE) / 2.0; // Center the map horizontally
     const OFFSET_Y: f32 = (12.0 * TILE_SIZE) / 2.0;

@@ -1,6 +1,8 @@
 use bevy::prelude::*;
-pub type AnimalProductValues = (&'static str, (f32, f32));
+
 pub const ANIMAL_PRODUCT_COLOR: Color = Color::srgb(0.3, 0.0, 0.0);
+
+pub type AnimalProductValues = (&'static str, (f32, f32));
 
 pub const MEAD: AnimalProductValues = ("MEAD", (1., 2.));
 pub const STOCKFISH: AnimalProductValues = ("STOCKFISH", (1., 3.));
