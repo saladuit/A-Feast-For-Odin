@@ -1,5 +1,4 @@
 use crate::bundles::*;
-use crate::components::*;
 use bevy::prelude::*;
 
 #[derive(Bundle)]

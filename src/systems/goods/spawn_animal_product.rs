@@ -1,5 +1,4 @@
 use crate::bundles::*;
-use crate::components::goods::*;
 use crate::constants::*;
 
 use bevy::prelude::*;
