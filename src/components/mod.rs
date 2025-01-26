@@ -1,26 +1,34 @@
+pub mod animal_product;
+pub mod craft_product;
 pub mod dimension;
 pub mod equipment;
+pub mod farm_product;
 pub mod food;
 pub mod forge_symbol;
-pub mod good_type;
+pub mod good;
 pub mod goods_color;
 pub mod harvest_number;
+pub mod luxury_good;
 pub mod negative_points;
+pub mod ore;
 pub mod points;
 pub mod pregnant;
+pub mod silver;
 pub mod silver_cost;
 pub mod spaces;
+pub mod stone;
 pub mod supply;
 pub mod sword_value;
 pub mod tile_type;
 pub mod victory_points;
+pub mod wood;
 
 // Re-export TileType for easy access
 pub use dimension::*;
 pub use equipment::*;
 pub use food::*;
 pub use forge_symbol::*;
-pub use good_type::*;
+pub use good::*;
 pub use goods_color::*;
 pub use harvest_number::*;
 pub use negative_points::*;

@@ -2,7 +2,7 @@ use crate::bundles::*;
 use crate::components::*;
 use bevy::prelude::*;
 
-#[derive(Component)]
+#[derive(Bundle)]
 pub struct FoodBundle {
     pub tile: TileBundle,
     pub harvest_number: HarvestNumber,

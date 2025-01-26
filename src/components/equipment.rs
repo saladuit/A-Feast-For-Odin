@@ -1,12 +1,5 @@
 use bevy::prelude::*;
 
 #[derive(Component, Default)]
+#[require(Good)]
 pub struct Equipment;
-
-#[derive(Component)]
-#[require(Equipment)]
-pub struct CraftProduct;
-
-#[derive(Component)]
-#[require(Equipment)]
-pub struct LuxuryGood;
