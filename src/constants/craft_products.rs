@@ -1,10 +1,59 @@
-pub const CRAFT_PRODUCTS: &[(&str, (u32, u32))] = &[
-    ("oil", (1, 2)),
-    ("hide", (1, 3)),
-    ("wool", (2, 2)),
-    ("linen", (1, 4)),
-    ("skin and bones", (2, 3)),
-    ("fur", (2, 4)),
-    ("robe", (3, 3)),
-    ("clothing", (3, 4)),
+use bevy::prelude::*;
+
+pub const CRAFT_PRODUCT_COLOR: Color = Color::srgb(0.0, 1.0, 0.0);
+
+pub struct CraftProductData {
+    pub name: &'static str,
+    pub dimensions: (f32, f32),
+}
+
+pub const OIL: CraftProductData = CraftProductData {
+    name: "oil",
+    dimensions: (1.0, 2.0),
+};
+
+pub const HIDE: CraftProductData = CraftProductData {
+    name: "hide",
+    dimensions: (1.0, 3.0),
+};
+
+pub const WOOL: CraftProductData = CraftProductData {
+    name: "wool",
+    dimensions: (2.0, 2.0),
+};
+
+pub const LINEN: CraftProductData = CraftProductData {
+    name: "linen",
+    dimensions: (1.0, 4.0),
+};
+
+pub const SKIN_AND_BONES: CraftProductData = CraftProductData {
+    name: "skin and bones",
+    dimensions: (2.0, 3.0),
+};
+
+pub const FUR: CraftProductData = CraftProductData {
+    name: "fur",
+    dimensions: (2.0, 4.0),
+};
+
+pub const ROBE: CraftProductData = CraftProductData {
+    name: "robe",
+    dimensions: (3.0, 3.0),
+};
+
+pub const CLOTHING: CraftProductData = CraftProductData {
+    name: "clothing",
+    dimensions: (3.0, 4.0),
+};
+
+pub const CRAFT_PRODUCTS: &[CraftProductData] = &[
+    OIL,
+    HIDE,
+    WOOL,
+    LINEN,
+    SKIN_AND_BONES,
+    FUR,
+    ROBE,
+    CLOTHING,
 ];
