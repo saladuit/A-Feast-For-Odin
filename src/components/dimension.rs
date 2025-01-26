@@ -1,4 +1,4 @@
 use bevy::prelude::*;
 
 #[derive(Component, Default)]
-pub struct VictoryPoints(pub u32);
+pub struct Dimension(pub (f32, f32));

@@ -1,9 +1,11 @@
 use bevy::prelude::*;
 
-#[derive(Component)]
+#[derive(Component, Default)]
 pub enum HarvestNumber {
-  One,
-  Two,
-  Three,
-  Four,
+    #[default]
+    None,
+    One,
+    Two,
+    Three,
+    Four,
 }

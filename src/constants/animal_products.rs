@@ -1,27 +1,13 @@
-use crate::components::*;
+use bevy::prelude::*;
+pub type AnimalProductValues = (&'static str, (f32, f32));
+pub const ANIMAL_PRODUCT_COLOR: Color = Color::srgb(0.3, 0.0, 0.0);
 
-macro_rules! define_animal_product {
-  ($name:ident, $width:expr, $height:expr) => {
-      pub const $name: (&str, TileDimension) = (
-          stringify!($name),
-          TileDimension(($width, $height)),
-      );
-  };
-  ($name:ident, $width:expr, $height:expr, $pregnant:expr, $victory_points:expr) => {
-      pub const $name: (&str, TileDimension, Pregnant, VictoryPoints) = (
-          stringify!($name),
-          TileDimension(($width, $height)),
-          Pregnant($pregnant),
-          VictoryPoints($victory_points),
-      );
-  };
-}
+pub const MEAD: AnimalProductValues = ("MEAD", (1., 2.));
+pub const STOCKFISH: AnimalProductValues = ("STOCKFISH", (1., 3.));
+pub const MILK: AnimalProductValues = ("MILK", (2., 2.));
+pub const SALT_MEAT: AnimalProductValues = ("SALT_MEAT", (1., 4.));
+pub const GAME_MEAT: AnimalProductValues = ("GAME_MEAT", (2., 3.));
+pub const WHALE_MEAT: AnimalProductValues = ("WHALE_MEAT", (3., 3.));
 
-define_animal_product!(MEAD, 1, 2);
-define_animal_product!(STOCKFISH, 1, 3);
-define_animal_product!(MILK, 2, 2);
-define_animal_product!(SALT_MEAT, 1, 4);
-define_animal_product!(GAME_MEAT, 2, 3);
-define_animal_product!(SHEEP, 2, 4, false, 3);
-define_animal_product!(WHALE_MEAT, 3, 3);
-define_animal_product!(CATTLE, 3, 4, false, 4);
+pub const ANIMAL_PRODUCTS: &[AnimalProductValues] =
+    &[MEAD, STOCKFISH, MILK, SALT_MEAT, GAME_MEAT, WHALE_MEAT];

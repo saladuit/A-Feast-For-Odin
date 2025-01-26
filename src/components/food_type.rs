@@ -1,5 +1,5 @@
-use bevy::prelude::*;
 use crate::components::goods_color::GoodsColor;
+use bevy::prelude::*;
 
 #[derive(Component)]
 pub enum FoodType {
