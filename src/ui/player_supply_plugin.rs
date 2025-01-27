@@ -10,9 +10,9 @@ impl Plugin for PlayerSupplyPlugin {
 
 fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
  // Camera
- commands.spawn((Camera2d, IsDefaultUiCamera));
+//  commands.spawn((Camera2d, IsDefaultUiCamera));
 
-    // Inventory panel on the right
+    // Player Supply panel on the right
     commands
         .spawn((
             Node {
@@ -29,7 +29,7 @@ fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
         .with_children(|parent| {
             // Inventory title
             parent.spawn((
-                Text::new("Inventory"),
+                Text::new("Player Supply"),
                 TextFont {
                     font_size: 40.0,
                     font: asset_server.load("fonts/norse/Norse.otf"), // Replace with your font path
