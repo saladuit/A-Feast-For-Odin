@@ -47,13 +47,5 @@ pub const CLOTHING: CraftProductData = CraftProductData {
     dimensions: (3.0, 4.0),
 };
 
-pub const CRAFT_PRODUCTS: &[CraftProductData] = &[
-    OIL,
-    HIDE,
-    WOOL,
-    LINEN,
-    SKIN_AND_BONES,
-    FUR,
-    ROBE,
-    CLOTHING,
-];
+pub const CRAFT_PRODUCTS: &[CraftProductData] =
+    &[OIL, HIDE, WOOL, LINEN, SKIN_AND_BONES, FUR, ROBE, CLOTHING];

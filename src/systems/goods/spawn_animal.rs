@@ -1,19 +1,34 @@
 use crate::{
-    components::{Pregnant, VictoryPoints},
-    constants::AnimalValues,
+    components::*,
+    constants::*,
+    bundles::*,
 };
 use bevy::prelude::*;
 
-use super::spawn_animal_product;
-
 pub fn spawn_animal<'a>(
     commands: &'a mut Commands,
-    animal: AnimalValues,
+    animal: AnimalData,
     position: Vec3,
 ) -> EntityCommands<'a> {
-    let mut animal_product = spawn_animal_product(commands, (animal.0, animal.1), position);
-    animal_product
-        .insert(Pregnant(animal.2))
-        .insert(VictoryPoints(animal.3));
-    animal_product
+  commands.spawn(AnimalBundle {
+    animal_product: AnimalProductBundle {
+    tile: TileBundle {
+        name: Name::new(animal.name),
+        dimension: Dimension(animal.dimensions),
+        sprite: Sprite {
+            color: ANIMAL_PRODUCT_COLOR,
+            custom_size: Some(Vec2::new(
+                TILE_SIZE * animal.dimensions.0,
+                TILE_SIZE * animal.dimensions.1,
+            )),
+            ..Default::default()
+        },
+        transform: Transform::from_translation(position),
+    },
+    animal_product: AnimalProduct,
+  },
+  animal: Animal,
+  victory_points: VictoryPoints(animal.victory_points),
+
+})
 }

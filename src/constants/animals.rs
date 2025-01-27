@@ -22,7 +22,4 @@ pub const CATTLE: AnimalData = AnimalData {
     victory_points: 4,
 };
 
-pub const ANIMALS: &[AnimalData] = &[
-    SHEEP,
-    CATTLE,
-];
+pub const ANIMALS: &[AnimalData] = &[SHEEP, CATTLE];

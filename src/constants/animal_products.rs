@@ -37,11 +37,5 @@ pub const WHALE_MEAT: AnimalProductData = AnimalProductData {
     dimensions: (3.0, 3.0),
 };
 
-pub const ANIMAL_PRODUCTS: &[AnimalProductData] = &[
-    MEAD,
-    STOCKFISH,
-    MILK,
-    SALT_MEAT,
-    GAME_MEAT,
-    WHALE_MEAT,
-];
+pub const ANIMAL_PRODUCTS: &[AnimalProductData] =
+    &[MEAD, STOCKFISH, MILK, SALT_MEAT, GAME_MEAT, WHALE_MEAT];
