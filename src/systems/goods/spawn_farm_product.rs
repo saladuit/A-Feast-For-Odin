@@ -1,7 +1,7 @@
-use bevy::prelude::*;
 use crate::bundles::*;
-use crate::constants::*;
 use crate::components::*;
+use crate::constants::*;
+use bevy::prelude::*;
 
 pub fn spawn_farm_product<'a>(
     commands: &'a mut Commands,

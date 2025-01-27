@@ -4,6 +4,7 @@ mod bundles;
 mod camera;
 mod components;
 mod constants;
+mod events;
 mod systems;
 mod ui;
 
