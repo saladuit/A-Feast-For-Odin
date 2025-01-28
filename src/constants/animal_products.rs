@@ -16,7 +16,7 @@ pub const SALT_MEAT_DIMENSIONS: (f32, f32) = (1.0, 4.0);
 pub const GAME_MEAT_DIMENSIONS: (f32, f32) = (2.0, 3.0);
 pub const WHALE_MEAT_DIMENSIONS: (f32, f32) = (3.0, 3.0);
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Resource)]
 pub struct AnimalProductData {
     pub name: &'static str,
     pub dimensions: (f32, f32),

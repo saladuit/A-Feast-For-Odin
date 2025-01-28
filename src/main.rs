@@ -2,7 +2,6 @@ use bevy::prelude::*;
 use components::*;
 use constants::AnimalProductResource;
 use events::supply::AddGoodToSupply;
-use systems::add_good_to_supply;
 use ui::player_supply_plugin::*;
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 mod bundles;
