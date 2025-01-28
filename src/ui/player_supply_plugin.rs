@@ -1,3 +1,7 @@
+use std::process::exit;
+use std::thread::sleep;
+use std::time::Duration;
+
 use crate::bundles::*;
 use crate::components::*;
 use crate::events::supply::*;
@@ -8,9 +12,10 @@ pub struct PlayerSupplyUIPlugin;
 
 impl Plugin for PlayerSupplyUIPlugin {
     fn build(&self, app: &mut App) {
-        app.add_observer(on_add_good_to_supply)
+        app
             .add_systems(Startup, (setup_ui, init_player_supply))
-            .add_systems(PostStartup, add_good_to_supply);
+            .add_systems(PostStartup, add_good_to_supply)
+            .add_observer(on_add_good_to_supply);
         // .add_systems(Update, (update_supply_ui).chain())
     }
 }
@@ -18,23 +23,17 @@ impl Plugin for PlayerSupplyUIPlugin {
 pub struct PlayerSupplyUI;
 
 pub fn on_add_good_to_supply(
-    trigger: Trigger<OnAdd, AnimalProductBundle>,
+    trigger: Trigger<OnAdd, AnimalProduct>,
     mut commands: Commands,
     mut query: Query<Entity, With<PlayerSupplyUI>>,
-    data: Query<(&Name, &Dimension), With<AnimalProduct>>
+    data: Query<(&Name, &Dimension), Added<AnimalProduct>>
 ) {
-    info!("On add good to supply called");
-    for  (name, dimension) in  data {
+    for  (name, dimension) in  &data {
         let new_node = commands.spawn(Text::new(name)).id();
         for parent_node in query.iter_mut() {
             commands.entity(parent_node).add_child(new_node);
         }
     }
-    // for parent_node in query.iter_mut() {
-    //     let new_node = commands.spawn(Text::new(name)).id();
-    //     // commands.entity(parent_node).add_child(new_node);
-    //     info!("Added {} to supply", name);
-    // }
 }
 // for parent_node in query.iter_mut() {
 //   let animal_product_bundle = query.get(trigger.entity()).unwrap();
