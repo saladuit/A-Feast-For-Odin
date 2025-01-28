@@ -7,4 +7,5 @@ pub struct TileBundle {
     pub dimension: Dimension,
     pub sprite: Sprite,
     pub transform: Transform,
+    pub visible: Visibility,
 }

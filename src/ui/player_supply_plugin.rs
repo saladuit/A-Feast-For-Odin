@@ -6,13 +6,29 @@ pub struct PlayerSupplyUIPlugin;
 
 impl Plugin for PlayerSupplyUIPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, (setup_ui, init_player_supply, add_good_to_supply).chain())
-        .add_systems(Update, (update_supply_ui).chain());
-      .add_observer
+        app
+        .add_observer(on_add_good_to_supply)
+        .add_systems(Startup, (setup_ui, init_player_supply))
+      .add_systems(PostStartup, add_good_to_supply);
+        // .add_systems(Update, (update_supply_ui).chain())
     }
 }
 #[derive(Component)]
 pub struct PlayerSupplyUI;
+
+pub fn on_add_good_to_supply(trigger: Trigger<On, Supply>, mut commands: Commands,  mut query: Query<Entity, With<PlayerSupplyUI>>) {
+  info!("On add good to supply called");
+  match trigger.event() {
+    AddGoodToSupply::AnimalProduct(good) => {
+      for parent_node in query.iter_mut() {
+        let new_node = commands.spawn(Text::new(good.name)).id();
+        commands.entity(parent_node).add_child(new_node);
+        info!("Added {} to supply", good.name);
+      }
+
+    }
+  }
+}
 
 pub fn update_supply_ui(
   mut commands: Commands,
@@ -22,14 +38,9 @@ pub fn update_supply_ui(
   for event in event.read() {
       match event {
           AddGoodToSupply::AnimalProduct(good) => {
-              for mut parent_node in query.iter_mut() {
-                  // Create a new node with the content from `good`
-                  let new_node = commands.spawn((Text::new(good.name)))
-                  .id();
-
-                  // Add the new node as a child to the parent node
-                  commands.entity(parent_node).
-                      add_child(new_node);
+              for parent_node in query.iter_mut() {
+                  let new_node = commands.spawn(Text::new(good.name)).id();
+                  commands.entity(parent_node).add_child(new_node);
               }
           }
       }
