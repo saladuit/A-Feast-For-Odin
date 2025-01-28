@@ -1,15 +1,39 @@
-use crate::constants::*;
-use crate::{components::*, systems::spawn_animal_product};
+use crate::components::*;
+use crate::events::supply::*;
 use bevy::prelude::*;
-use crate::bundles::*;
 
-pub struct PlayerSupplyPlugin;
+pub struct PlayerSupplyUIPlugin;
 
-impl Plugin for PlayerSupplyPlugin {
+impl Plugin for PlayerSupplyUIPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, (setup_ui, init_player_supply).chain());
-        // .add_systems(Update, (update_supply).chain());
+        app.add_systems(Startup, (setup_ui, init_player_supply, add_good_to_supply).chain())
+        .add_systems(Update, (update_supply_ui).chain());
+      .add_observer
     }
+}
+#[derive(Component)]
+pub struct PlayerSupplyUI;
+
+pub fn update_supply_ui(
+  mut commands: Commands,
+  mut query: Query<Entity, With<PlayerSupplyUI>>,
+  mut event: EventReader<AddGoodToSupply>,
+) {
+  for event in event.read() {
+      match event {
+          AddGoodToSupply::AnimalProduct(good) => {
+              for mut parent_node in query.iter_mut() {
+                  // Create a new node with the content from `good`
+                  let new_node = commands.spawn((Text::new(good.name)))
+                  .id();
+
+                  // Add the new node as a child to the parent node
+                  commands.entity(parent_node).
+                      add_child(new_node);
+              }
+          }
+      }
+  }
 }
 
 fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
@@ -24,8 +48,8 @@ fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                 align_items: AlignItems::FlexStart,
                 ..default()
             },
-            Supply::new(),
-            // BackgroundColor(Color::srgb(0.87, 0.72, 0.53)), // Light brown
+            PlayerSupplyUI,
+            BackgroundColor(Color::srgb(0.87, 0.72, 0.53)), // Light brown
         ))
         .with_children(|parent| {
             // Inventory title
@@ -46,45 +70,7 @@ fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                     ..default()
                 },
                 
-                // BackgroundColor(Color::srgb(0.53, 0.8, 0.92)), // Light sky blue
+                BackgroundColor(Color::srgb(0.53, 0.8, 0.92)), // Light sky blue
             ));
-            parent.spawn( (
-              Node {
-                margin: UiRect {
-                    top: Val::Px(20.0),
-                    left: Val::Px(10.0),
-                    ..default()
-                },
-                ..default()
-            },
-               AnimalProductBundle {
-                tile: TileBundle {
-                    name: Name::new(MEAD.name),
-                    dimension: Dimension(MEAD.dimensions),
-                    sprite: Sprite {
-                        color: ANIMAL_PRODUCT_COLOR,
-                        custom_size: Some(Vec2::new(
-                            TILE_SIZE * MEAD.dimensions.0,
-                            TILE_SIZE * MEAD.dimensions.1,
-                        )),
-                        ..Default::default()
-                    },
-                    transform: Transform::from_translation(Vec3::new(0.0, 0.0, 0.0)),
-                  },
-                  animal_product: AnimalProduct,
-            }));
           });
-          // spawn_animal_product(&mut commands, MEAD, Vec3::new(500.0, 300.0, 0.0));
-}
-
-fn init_player_supply(mut commands: Commands, player_supply: Query<Entity, With<Supply>>) {
-  if let Ok(player_supply) = player_supply.get_single() {
-      let position = Vec3::new( 500.0, 300., 2.0);
-      // spawn_animal_product(&mut commands, MEAD, position).set_parent(player_supply);
-      // spawn_animal_product(&mut commands, MEAD, position);
-      // let x = node.width.
-        info!("Player supply initialized");
-    } else {
-        warn!("Player supply entity not found");
-    }
 }

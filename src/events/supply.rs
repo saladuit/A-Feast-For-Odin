@@ -1,7 +1,7 @@
 use bevy::prelude::*;
+use crate::constants::*;
 
-#[derive(Event, Debug)]
-pub struct AddGoodToSupply {
-    pub good: Entity,
-    pub quantity: u32,
+#[derive(Event)]
+pub enum AddGoodToSupply {
+    AnimalProduct(AnimalProductData),
 }
