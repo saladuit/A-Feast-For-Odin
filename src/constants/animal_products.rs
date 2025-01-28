@@ -56,18 +56,18 @@ pub const ANIMAL_PRODUCTS: &[AnimalProductData] =
     &[MEAD, STOCKFISH, MILK, SALT_MEAT, GAME_MEAT, WHALE_MEAT];
 
 #[derive(Resource)]
-pub struct AnimalProductResource {
+pub struct AnimalProductsResource {
     pub products: Vec<AnimalProductData>,
       pub color: Color,
 }
 
-impl Default for AnimalProductResource {
+impl Default for AnimalProductsResource {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl AnimalProductResource {
+impl AnimalProductsResource {
     pub fn new() -> Self {
         Self {
             products: ANIMAL_PRODUCTS.to_vec(),

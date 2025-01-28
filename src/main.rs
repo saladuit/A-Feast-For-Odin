@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use components::*;
-use constants::AnimalProductResource;
+use constants::*;
 use events::supply::AddGoodToSupply;
 use ui::player_supply_plugin::*;
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
@@ -17,7 +17,7 @@ fn main() {
         .add_plugins((DefaultPlugins, PlayerSupplyUIPlugin, WorldInspectorPlugin::new()))
         .register_type::<Supply>()
         .add_event::<AddGoodToSupply>()
-        .init_resource::<AnimalProductResource>()
+        .init_resource::<AnimalProductsResource>()
         .add_systems(
             Startup,
             (

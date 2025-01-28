@@ -16,18 +16,18 @@ impl Plugin for PlayerSupplyUIPlugin {
 #[derive(Component)]
 pub struct PlayerSupplyUI;
 
-pub fn on_add_good_to_supply(trigger: Trigger<On, Supply>, mut commands: Commands,  mut query: Query<Entity, With<PlayerSupplyUI>>) {
+pub fn on_add_good_to_supply(trigger: Trigger<OnAdd, AnimalProduct>, mut commands: Commands,  mut query: Query<Entity, With<PlayerSupplyUI>>) {
   info!("On add good to supply called");
-  match trigger.event() {
-    AddGoodToSupply::AnimalProduct(good) => {
-      for parent_node in query.iter_mut() {
-        let new_node = commands.spawn(Text::new(good.name)).id();
-        commands.entity(parent_node).add_child(new_node);
-        info!("Added {} to supply", good.name);
-      }
+  // match trigger.event() {
+  //   AddGoodToSupply::AnimalProduct(good) => {
+  //     for parent_node in query.iter_mut() {
+  //       let new_node = commands.spawn(Text::new(good.name)).id();
+  //       commands.entity(parent_node).add_child(new_node);
+  //       info!("Added {} to supply", good.name);
+  //     }
 
-    }
-  }
+  //   }
+  // }
 }
 
 pub fn update_supply_ui(
