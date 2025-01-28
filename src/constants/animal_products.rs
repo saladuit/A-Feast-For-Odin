@@ -58,7 +58,7 @@ pub const ANIMAL_PRODUCTS: &[AnimalProductData] =
 #[derive(Resource)]
 pub struct AnimalProductsResource {
     pub products: Vec<AnimalProductData>,
-      pub color: Color,
+    pub color: Color,
 }
 
 impl Default for AnimalProductsResource {

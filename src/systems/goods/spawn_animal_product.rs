@@ -7,7 +7,7 @@ use bevy::prelude::*;
 pub fn spawn_animal_product<'a>(
     commands: &'a mut Commands,
     animal_products: Res<AnimalProductsResource>,
-      aniimal_product_name: &str,
+    aniimal_product_name: &str,
     position: Vec3,
 ) -> EntityCommands<'a> {
     let animal_product = animal_products.get_by_name(aniimal_product_name).unwrap();
