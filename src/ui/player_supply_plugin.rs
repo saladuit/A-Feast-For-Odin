@@ -1,12 +1,7 @@
-use std::process::exit;
-use std::thread::sleep;
-use std::time::Duration;
+use bevy::prelude::*;
 
-use crate::bundles::*;
 use crate::components::*;
 use crate::events::supply::*;
-use bevy::prelude::*;
-use bevy::transform::components;
 
 pub struct PlayerSupplyUIPlugin;
 
@@ -35,19 +30,6 @@ pub fn on_add_good_to_supply(
         }
     }
 }
-// for parent_node in query.iter_mut() {
-//   let animal_product_bundle = query.get(trigger.entity()).unwrap();
-//   animal_product_bundle.tile.
-//   let animal_product = query.get(trigger.entity()).unwrap();
-//   animal_product.
-//   commands.entity(parent_node).add_child(new_node);
-//   info!("Added {} to supply", trigger.event().name);
-// }
-// match trigger.event() {
-//   AddGoodToSupply::AnimalProduct(good) => {
-
-//   }
-// }
 
 pub fn update_supply_ui(
     mut commands: Commands,
