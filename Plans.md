@@ -6,3 +6,6 @@ Next steps
 - Snap the tile to the grid.
 - Click to place it on the board.
 - bonus: need to add 90 degree rotation actions to the tile.
+Example to let a world object follow the mouse.
+Still need to figure out how to pick the correct entity that corresponds to the inventory ui.
+// https://github.com/bevyengine/bevy/blob/main/examples/2d/2d_viewport_to_world.rs
