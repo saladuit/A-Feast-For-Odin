@@ -9,11 +9,45 @@ impl Plugin for PlayerSupplyUIPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Startup, (setup_ui, init_player_supply))
             .add_systems(PostStartup, add_good_to_supply)
+            .add_systems(Update, on_pressed_good)
             .add_observer(on_add_good_to_supply);
     }
 }
 #[derive(Component)]
 pub struct PlayerSupplyUI;
+pub fn on_pressed_good(
+    mut interaction_query: Query<
+        (
+            &Interaction,
+            &mut BackgroundColor,
+            &mut BorderColor,
+            // &Children,
+        ),
+        (Changed<Interaction>, With<Good>),
+    >,
+) {
+    for (interaction, mut background_color, mut border_color) in
+        interaction_query.iter_mut()
+    {
+        match *interaction {
+            Interaction::Pressed => {
+                background_color.0 = Color::srgb(0.0, 1.0, 0.0);
+                border_color.0 = Color::srgb(0.0, 0.0, 0.0);
+                // for child in children.iter() {
+                //     println!("Pressed: {:?}", child);
+                // }
+            }
+            Interaction::Hovered => {
+                background_color.0 = Color::srgb(0.0, 0.0, 0.0);
+                border_color.0 = Color::srgb(0.0, 0.0, 0.0);
+            }
+            Interaction::None => {
+                background_color.0 = Color::srgb(0.3, 0.0, 0.0);
+                border_color.0 = Color::BLACK;
+            }
+        }
+    }
+}
 
 pub fn on_add_good_to_supply(
     trigger: Trigger<OnAdd, AnimalProduct>,
@@ -27,7 +61,8 @@ pub fn on_add_good_to_supply(
             .spawn((
                 Node {
                     width: Val::Percent(20.0),
-                    height: Val::Percent(100.0),
+                    // height: Val::Percent(100.0),
+                    aspect_ratio: Some(1.0),
                     border: UiRect::all(Val::Percent(10.0)),
                     flex_wrap: FlexWrap::Wrap,
                     ..default()
@@ -41,6 +76,8 @@ pub fn on_add_good_to_supply(
                     font: asset_server.load("fonts/norse/Norse.otf"),
                     ..default()
                 },
+                Good,
+                Button,
                 TextLayout {
                     justify: JustifyText::Center,
                     ..default()
