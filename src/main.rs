@@ -26,7 +26,7 @@ fn main() {
             Startup,
             (
                 camera::spawn_camera,
-                // systems::draw_placement_area::draw_placement_area,
+                systems::draw_placement_area::draw_placement_area,
             ),
         )
         .run();

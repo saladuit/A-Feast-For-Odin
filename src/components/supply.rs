@@ -43,5 +43,5 @@ pub fn add_good_to_supply(
     mut query: Query<&mut Supply>,
 ) {
     let mut supply = query.single_mut();
-    supply.add_item(commands, &animal_products, MEAD_NAME, 2);
+    supply.add_item(commands, &animal_products, MEAD_NAME, 10);
 }

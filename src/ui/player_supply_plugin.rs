@@ -26,17 +26,18 @@ pub fn on_add_good_to_supply(
         let new_node = commands
             .spawn((
                 Node {
-                    width: Val::Px(80.0),
-                    height: Val::Px(80.0),
-                    border: UiRect::all(Val::Px(1.0)),
+                    width: Val::Percent(20.0),
+                    height: Val::Percent(100.0),
+                    border: UiRect::all(Val::Percent(10.0)),
                     flex_wrap: FlexWrap::Wrap,
                     ..default()
                 },
                 BorderColor(Color::BLACK),
+                BorderRadius::all(Val::Px(15.0)),
                 BackgroundColor(Color::srgb(0.3, 0.0, 0.0)),
                 Text::new(name),
                 TextFont {
-                    font_size: 40.0,
+                    font_size: 16.0,
                     font: asset_server.load("fonts/norse/Norse.otf"),
                     ..default()
                 },
