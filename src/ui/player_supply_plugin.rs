@@ -20,6 +20,7 @@ pub fn on_add_good_to_supply(
     mut commands: Commands,
     mut query: Query<Entity, With<PlayerSupplyUI>>,
     data: Query<(&Name, &Dimension), Added<AnimalProduct>>,
+    asset_server: Res<AssetServer>,
 ) {
     for (name, dimension) in &data {
         let new_node = commands
@@ -31,8 +32,18 @@ pub fn on_add_good_to_supply(
                     flex_wrap: FlexWrap::Wrap,
                     ..default()
                 },
+                BorderColor(Color::BLACK),
                 BackgroundColor(Color::srgb(0.3, 0.0, 0.0)),
                 Text::new(name),
+                TextFont {
+                    font_size: 40.0,
+                    font: asset_server.load("fonts/norse/Norse.otf"),
+                    ..default()
+                },
+                TextLayout {
+                    justify: JustifyText::Center,
+                    ..default()
+                },
             ))
             .id();
         for parent_node in query.iter_mut() {
@@ -69,6 +80,7 @@ fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                 justify_content: JustifyContent::FlexStart,
                 align_items: AlignItems::FlexStart,
                 flex_wrap: FlexWrap::Wrap,
+                flex_direction: FlexDirection::Column,
                 ..default()
             },
             BackgroundColor(Color::srgb(0.87, 0.72, 0.53)), // Light brown
