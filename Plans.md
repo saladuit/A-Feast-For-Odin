@@ -9,3 +9,6 @@ Next steps
 Example to let a world object follow the mouse.
 Still need to figure out how to pick the correct entity that corresponds to the inventory ui.
 // https://github.com/bevyengine/bevy/blob/main/examples/2d/2d_viewport_to_world.rs
+
+Bugs:
+- Player Supply grid keeps getting smaller

@@ -1,4 +1,6 @@
 use bevy::prelude::*;
+use bevy::render::view::visibility;
+use bevy::state::commands;
 
 use crate::components::*;
 use crate::events::supply::*;
@@ -15,27 +17,36 @@ impl Plugin for PlayerSupplyUIPlugin {
 }
 #[derive(Component)]
 pub struct PlayerSupplyUI;
+
 pub fn on_pressed_good(
     mut interaction_query: Query<
         (
+            Entity,
             &Interaction,
             &mut BackgroundColor,
             &mut BorderColor,
+            &Text,
             // &Children,
         ),
         (Changed<Interaction>, With<Good>),
     >,
+    mut query_supply: Query<&Supply>,
+    mut commands: Commands,
 ) {
-    for (interaction, mut background_color, mut border_color) in
+    for (entity, interaction, mut background_color, mut border_color, text) in
         interaction_query.iter_mut()
     {
         match *interaction {
             Interaction::Pressed => {
                 background_color.0 = Color::srgb(0.0, 1.0, 0.0);
                 border_color.0 = Color::srgb(0.0, 0.0, 0.0);
-                // for child in children.iter() {
-                //     println!("Pressed: {:?}", child);
-                // }
+                commands.entity(entity).despawn();
+                let supply = query_supply.single();
+                for (entity, _) in supply.goods.iter() {
+                    let product_entity  = commands.entity(*entity);
+                    // How should I check the component values of the entity?
+                }
+                info!("{}",text.0);
             }
             Interaction::Hovered => {
                 background_color.0 = Color::srgb(0.0, 0.0, 0.0);
@@ -82,6 +93,7 @@ pub fn on_add_good_to_supply(
                     justify: JustifyText::Center,
                     ..default()
                 },
+                // In here?
             ))
             .id();
         for parent_node in query.iter_mut() {
